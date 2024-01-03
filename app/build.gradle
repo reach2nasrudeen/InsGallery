@@ -9,6 +9,7 @@ android {
         targetSdkVersion cfgs.targetSdkVersion
         versionCode cfgs.versionCode
         versionName cfgs.versionName
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -40,5 +41,5 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:${cfgs.version_recyclerview}"
     implementation "androidx.camera:camera-camera2:${cfgs.camerax_version}"
     implementation "com.github.bumptech.glide:glide:${cfgs.glide_version}"
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
 }

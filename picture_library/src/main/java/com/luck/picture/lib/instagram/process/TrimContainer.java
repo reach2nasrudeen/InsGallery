@@ -296,7 +296,11 @@ public class TrimContainer extends FrameLayout {
             int videoWidth = Integer.parseInt(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
             int videoHeight = Integer.parseInt(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
             float instagramAspectRatio = InstagramPreviewContainer.getInstagramAspectRatio(videoWidth, videoHeight);
-            mediaMetadataRetriever.release();
+            try {
+                mediaMetadataRetriever.release();
+            } catch (Exception exception) {
+                System.out.println(exception.getMessage());
+            }
 
             if (isAspectRatio && instagramAspectRatio > 0) {
                 resizer = new AspectRatioResizer(instagramAspectRatio);

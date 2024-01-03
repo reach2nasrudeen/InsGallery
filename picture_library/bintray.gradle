@@ -1,4 +1,4 @@
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 allprojects {
     repositories {
@@ -16,11 +16,11 @@ allprojects {
 
 def siteUrl = 'https://github.com/JessYanCoding/InsGallery'   // 项目的主页
 
-publish {
-    userOrg = 'jessyancoding'      //bintray注册的用户名
-    groupId = 'me.jessyan'         //compile引用时的第1部分groupId
-    artifactId = 'insgallery'     //compile引用时的第2部分项目名
-    publishVersion = cfgs.versionName    //compile引用时的第3部分版本号
-    desc = 'Instagram-like image picker for Android.'
-    website = siteUrl
-}
+//publish {
+//    userOrg = 'jessyancoding'      //bintray注册的用户名
+//    groupId = 'me.jessyan'         //compile引用时的第1部分groupId
+//    artifactId = 'insgallery'     //compile引用时的第2部分项目名
+//    publishVersion = cfgs.versionName    //compile引用时的第3部分版本号
+//    desc = 'Instagram-like image picker for Android.'
+//    website = siteUrl
+//}

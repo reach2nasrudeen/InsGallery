@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion cfgs.compileSdkVersion
-    buildToolsVersion cfgs.buildToolsVersion
+//    buildToolsVersion cfgs.buildToolsVersion
 
     defaultConfig {
         minSdkVersion cfgs.minSdkVersion
@@ -10,6 +10,7 @@ android {
         versionCode 25
         versionName "2.2.5-non-native"
 
+        multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -19,8 +20,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
         abortOnError false
@@ -36,4 +37,4 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:${cfgs.version_recyclerview}"
 }
 
-apply from: 'bintray.gradle'
+//apply from: 'bintray.gradle'
