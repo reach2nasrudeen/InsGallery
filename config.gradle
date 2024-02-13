@@ -3,7 +3,7 @@ ext {
             compileSdkVersion             : 34,
 //            buildToolsVersion             : "29.0.3",
             minSdkVersion                 : 24,
-            targetSdkVersion              : 34,
+            targetSdkVersion              : 30,
             versionCode                   : 35,
             versionName                   : "0.7.0",
             ucropVersionCode              : 25,

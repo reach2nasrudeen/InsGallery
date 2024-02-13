@@ -15,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -39,6 +40,10 @@ import com.luck.picture.lib.tools.ToastUtils;
 import com.otaliastudios.transcoder.Transcoder;
 import com.otaliastudios.transcoder.TranscoderListener;
 import com.otaliastudios.transcoder.TranscoderOptions;
+import com.otaliastudios.transcoder.resize.AspectRatioResizer;
+import com.otaliastudios.transcoder.resize.FractionResizer;
+import com.otaliastudios.transcoder.resize.PassThroughResizer;
+import com.otaliastudios.transcoder.resize.Resizer;
 import com.otaliastudios.transcoder.sink.DataSink;
 import com.otaliastudios.transcoder.sink.DefaultDataSink;
 import com.otaliastudios.transcoder.source.ClipDataSource;
@@ -46,10 +51,6 @@ import com.otaliastudios.transcoder.source.FilePathDataSource;
 import com.otaliastudios.transcoder.source.UriDataSource;
 import com.otaliastudios.transcoder.strategy.DefaultVideoStrategy;
 import com.otaliastudios.transcoder.strategy.TrackStrategy;
-import com.otaliastudios.transcoder.strategy.size.AspectRatioResizer;
-import com.otaliastudios.transcoder.strategy.size.FractionResizer;
-import com.otaliastudios.transcoder.strategy.size.PassThroughResizer;
-import com.otaliastudios.transcoder.strategy.size.Resizer;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -60,6 +61,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -284,6 +286,7 @@ public class TrimContainer extends FrameLayout {
         }
 
         Resizer resizer = new PassThroughResizer();
+        Log.e("isCropVideo---->", String.valueOf(mConfig.instagramSelectionConfig.isCropVideo()));
         if (mConfig.instagramSelectionConfig.isCropVideo()) {
             MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
             Uri uri;
@@ -302,6 +305,10 @@ public class TrimContainer extends FrameLayout {
                 System.out.println(exception.getMessage());
             }
 
+            Log.e("videoWidth---->", String.valueOf(videoWidth));
+            Log.e("videoHeight---->", String.valueOf(videoHeight));
+            Log.e("isAspectRatio---->", String.valueOf(isAspectRatio));
+            Log.e("instagramAspectRatio---->", String.valueOf(instagramAspectRatio));
             if (isAspectRatio && instagramAspectRatio > 0) {
                 resizer = new AspectRatioResizer(instagramAspectRatio);
             } else if (!isAspectRatio) {
